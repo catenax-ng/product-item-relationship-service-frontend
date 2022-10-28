@@ -1,9 +1,11 @@
-import { useFetchJobById } from "../../../../services/queries/jobs";
-import { IRSJobTombstones } from "../IRSJobTombstones";
-import { IrsJobVisualization } from "../IRSJobVisualization/IrsJobVIsualization";
-import { IrsJobDetailsDisplay } from "./IrsJobDetailsDisplay";
+import { useParams } from "react-router-dom";
+import { useFetchJobById } from "../../services/queries/jobs";
+import { IrsJobDetailsDisplay } from "./features/IRSJobDetails/IrsJobDetailsDisplay";
+import { IRSJobTombstones } from "./features/IRSJobTombstones";
+import { IrsJobVisualization } from "./features/IRSJobVisualization/IrsJobVIsualization";
 
-export const IrsJobDetails: React.FC<{ jobId: string }> = ({ jobId }) => {
+export const JobDetail: React.FC = () => {
+  const { jobId = "" } = useParams();
   const { data: job, isError, isLoading } = useFetchJobById(jobId);
   if (isLoading) {
     //TODO: Handle Loading State

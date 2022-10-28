@@ -1,9 +1,10 @@
-import { ItemRelationshipService } from "./pages/ItemRelationshipService/ItemRelationshipService";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./pages/Router";
 
 function App() {
   return (
     <div className="App">
-      <ItemRelationshipService />
+      <RouterProvider router={router} />
     </div>
   );
 }

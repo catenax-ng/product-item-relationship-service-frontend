@@ -6,7 +6,7 @@ import { Job } from "../../../../types/jobs";
 import { AutoRefreshSwitch } from "./components/AutoRefreshSwitch";
 import { renderJobsTableColumns } from "./components/RenderJobsTableColumns";
 
-export const IRSJobOverview: React.FC<{ setJobId: (id: string) => void }> = ({ setJobId }) => {
+export const IRSJobOverview: React.FC = () => {
   const { t } = useTranslation();
 
   const [isAutoRefreshEnabled, setIsAutoRefreshEnabled] = useState(false);
