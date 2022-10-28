@@ -238,7 +238,9 @@
         "jobID": "Id",
         "status": "Status",
         "visualize": "Visualisierung",
-        "toggleAutoRefresh": "Auto-Update alle 5 Sekunden"
+        "toggleAutoRefresh": "Auto-Update alle 5 Sekunden",
+        "startDate": "Start",
+        "endDate": "Ende"
       },
       "jobDetails": {
         "title": "Item Relationship Service Job Details",

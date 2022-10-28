@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { Button } from "../../../components/cx-portal-shared-components/components/basic/Button";
+import { Button } from "cx-portal-shared-components";
 import { IRSJobAddFormSelectField } from "./IRSJobAddFormSelectField";
 import { IRSJobAddFormTextfield } from "./IRSJobAddFormTextfield";
 

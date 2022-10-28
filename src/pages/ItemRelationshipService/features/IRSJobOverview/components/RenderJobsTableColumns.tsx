@@ -1,7 +1,8 @@
 import { GridColDef } from "@mui/x-data-grid";
 
-import { IconButton } from "../../../../../components/cx-portal-shared-components/components/basic/IconButton";
+import { IconButton } from "cx-portal-shared-components";
 import { ArrowForwardIcon, useTranslation } from "../../../../../lib";
+import { defaultDateFormat } from "../../../../../lib/dayjs";
 import { Job } from "../../../../../types/jobs";
 
 // Columns definitions of Digital Twin page Data Grid
@@ -12,21 +13,34 @@ export const renderJobsTableColumns = (visualize: (id: string) => void): Array<G
     {
       field: "jobId",
       headerName: t("content.irs.jobsTable.jobID"),
-      flex: 3,
+      flex: 1,
       filterable: false,
+    },
+    {
+      field: "start",
+      headerName: t("content.irs.jobsTable.startDate"),
+      width: 150,
+      filterable: false,
+      valueGetter: ({ row }: { row: Job }) => defaultDateFormat(row.startedOn),
+    },
+    {
+      field: "end",
+      headerName: t("content.irs.jobsTable.endDate"),
+      width: 150,
+      filterable: false,
+      valueGetter: ({ row }: { row: Job }) => defaultDateFormat(row.jobCompleted),
     },
     {
       field: "status",
       headerName: t("content.irs.jobsTable.status"),
-      // headerName: 'status',
-      flex: 2,
+
       filterable: false,
       valueGetter: ({ row }: { row: Job }) => row.jobState,
     },
     {
       field: "visualize",
       headerName: t("content.irs.jobsTable.visualize"),
-      flex: 1,
+
       sortable: false,
       filterable: false,
       width: 150,

@@ -1,4 +1,3 @@
-import "./App.scss";
 import { ItemRelationshipService } from "./pages/ItemRelationshipService/ItemRelationshipService";
 
 function App() {

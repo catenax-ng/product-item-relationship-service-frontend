@@ -1,5 +1,6 @@
 import { useFetchJobById } from "../../../../services/queries/jobs";
 import { IRSJobTombstones } from "../IRSJobTombstones";
+import { IrsJobVisualization } from "../IRSJobVisualization/IrsJobVIsualization";
 import { IrsJobDetailsDisplay } from "./IrsJobDetailsDisplay";
 
 export const IrsJobDetails: React.FC<{ jobId: string }> = ({ jobId }) => {
@@ -17,6 +18,7 @@ export const IrsJobDetails: React.FC<{ jobId: string }> = ({ jobId }) => {
 
   return (
     <>
+      <IrsJobVisualization job={job} />
       <IrsJobDetailsDisplay job={job.job} />
       <IRSJobTombstones job={job} />
     </>

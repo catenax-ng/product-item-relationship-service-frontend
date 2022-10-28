@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Table } from "../../../../components/cx-portal-shared-components/components/basic/Table";
+import { Table } from "cx-portal-shared-components";
 import { useTranslation } from "../../../../lib";
 import { useFetchJobs } from "../../../../services/queries/jobs";
 import { Job } from "../../../../types/jobs";

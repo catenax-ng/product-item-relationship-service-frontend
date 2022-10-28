@@ -13,6 +13,7 @@ export const AutoRefreshSwitch: React.FC<{ onChange: (value: boolean) => void }>
         onChange={(event) => {
           onChange(event.target.checked);
         }}
+        data-testid="IOSSwitch"
       />
       {t("content.irs.jobsTable.toggleAutoRefresh")}
     </>

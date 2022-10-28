@@ -48,4 +48,5 @@ export const I18nService = {
   init,
   changeLanguage,
   supportedLanguages,
+  resources,
 };

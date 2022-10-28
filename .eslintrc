@@ -11,5 +11,5 @@
     "@typescript-eslint/no-explicit-any": "error",
     "@typescript-eslint/ban-ts-comment": "error"
   },
-  "ignorePatterns": ["src/components/cx-portal-shared-components/**/*.*"]
+  "ignorePatterns": []
 }
