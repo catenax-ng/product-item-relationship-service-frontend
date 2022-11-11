@@ -1,12 +1,8 @@
 import { Box } from "@mui/system";
-import { Button } from "cx-portal-shared-components";
 import React from "react";
-import { Link, useRouteError } from "react-router-dom";
 //TODO: Create Better Layout
 
-export const ErrorDisplay: React.FC<{ error: unknown }> = () => {
-  const error = useRouteError() as Error & { statusText: string };
-
+export const ErrorDisplay: React.FC<{ error: unknown }> = ({ error }) => {
   return (
     <section>
       <Box className="irs-error-page">
@@ -18,11 +14,6 @@ export const ErrorDisplay: React.FC<{ error: unknown }> = () => {
           <p>
             <i>{(error as Error).message}</i>
           </p>
-          <Link to="/">
-            <Button style={{ margin: 20 }} variant="contained" color="secondary">
-              Go Home
-            </Button>
-          </Link>
         </Box>
       </Box>
     </section>

@@ -52,7 +52,7 @@ exports[`renders the tombstone information 1`] = `
             <div
               class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-vgqnfl-MuiGrid-root"
             >
-              2022-02-03 16:48:54
+              2022-02-03 14:48:54
             </div>
           </div>
           <hr

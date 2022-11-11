@@ -709,6 +709,34 @@ exports[`renders a data success state 1`] = `
 </div>
 `;
 
-exports[`renders a error state 1`] = `<div />`;
+exports[`renders a error state 1`] = `
+<div>
+  <section>
+    <div
+      class="irs-error-page MuiBox-root css-0"
+    >
+      <div
+        class="irs-error-page-header MuiBox-root css-0"
+      >
+        <h1>
+          Oops!
+        </h1>
+      </div>
+      <div
+        class="error-page-body MuiBox-root css-0"
+      >
+        <p>
+          Sorry, an unexpected error has occurred.
+        </p>
+        <p>
+          <i>
+            test error
+          </i>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+`;
 
 exports[`renders a loading state 1`] = `<div />`;
