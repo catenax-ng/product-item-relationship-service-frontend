@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a basic visualization 1`] = `
+<div>
+  <section>
+    <div
+      class="irs-visualization MuiBox-root css-xi606m"
+    >
+      <div
+        class="MuiBox-root css-0"
+      >
+        <div
+          class="irs-visualization-header MuiBox-root css-0"
+        >
+          <h5>
+            content.irs.visualization.title
+          </h5>
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary MuiIconButton-sizeMedium css-1gws2xf-MuiButtonBase-root-MuiIconButton-root"
+            style="align-self: right;"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="FullscreenIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <div
+          class="Canvas-module_container__22cN4 canvas Canvas-module_pannable__1d7xd"
+          style="height: 800px; width: 100%;"
+        >
+          <svg
+            height="2000"
+            id="ref-1"
+            width="2000"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <marker
+                id="end-arrow"
+                markerHeight="8"
+                markerWidth="8"
+                orient="auto"
+                refX="8"
+                viewBox="0 -4 8 8"
+              >
+                <path
+                  class="Arrow-module_arrow__aEgOT"
+                  d="M0,-4L8,0L0,4"
+                  transform="translate(0, 0) rotate(0)"
+                />
+              </marker>
+            </defs>
+            <g
+              opacity="0"
+              style="transform: scale(0); transform-origin: 0px 0px;"
+              transform-origin="0px 0px"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+`;

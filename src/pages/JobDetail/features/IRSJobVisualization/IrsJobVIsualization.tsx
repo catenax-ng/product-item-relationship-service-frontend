@@ -2,11 +2,14 @@ import { Box } from "@mui/material";
 import { uniqueId } from "lodash";
 
 import { IconButton } from "cx-portal-shared-components";
+import { useState } from "react";
 import { EdgeData, NodeData } from "reaflow";
 import { FullScreen, useFullScreenHandle } from "../../../../components/FullScreenHandler";
 import { FullscreenExitIcon, FullscreenIcon, useTranslation } from "../../../../lib";
 import { Canvas, CanvasPosition, Edge, Node } from "../../../../lib/reaflow";
 import { JobResponse, Shell } from "../../../../types/jobs";
+import { EdgeDetailDialog } from "./components/EdgeDetailDialog";
+import { NodeDetailDialog } from "./components/NodeDetailDialog";
 import { NodeTemplate } from "./components/nodeTemplate";
 
 const getNodes = (job: JobResponse): NodeData<Shell>[] => {
@@ -48,6 +51,9 @@ export const IrsJobVisualization: React.FC<{ job: JobResponse }> = ({ job }) => 
   const nodes = getNodes(job);
   const edges = getEdges(job);
 
+  const [showNodeDialog, setShowNodeDialog] = useState("");
+  const [showEdgeDialog, setShowEdgeDialog] = useState(undefined);
+
   const canvasHeight = () => {
     if (handle.active) {
       return window.innerHeight;
@@ -84,17 +90,11 @@ export const IrsJobVisualization: React.FC<{ job: JobResponse }> = ({ job }) => 
             defaultPosition={CanvasPosition.TOP}
             // fit={true}
             node={
-              <Node
-                onClick={(event, node) => {
-                  event.preventDefault();
-                  // console.log('CLICK', node)
-                  //   dispatch(jobSlice.actions.openNodeDialog(node.id));
-                }}
-              >
+              <Node>
                 {(nodeChild) => (
                   <foreignObject height={290} width={290} x={0} y={0}>
                     <Box>
-                      <NodeTemplate shell={nodeChild.node} />
+                      <NodeTemplate shell={nodeChild.node} onClick={setShowNodeDialog} />
                     </Box>
                   </foreignObject>
                 )}
@@ -103,16 +103,16 @@ export const IrsJobVisualization: React.FC<{ job: JobResponse }> = ({ job }) => 
             edge={
               <Edge
                 onClick={(event, edge) => {
-                  // console.log('Selecting Edge', event, edge)
-                  // dispatch(jobSlice.actions.openEdgeDialog(edge));
+                  console.log("Selecting Edge", event, edge);
+                  setShowEdgeDialog(edge);
                 }}
               />
             }
           />
         </FullScreen>
       </Box>
-      {/* <NodeDetailDialog show={showNodeDialog} onClose={() => closeNodeDialog()} />
-      <EdgeDetailDialog show={showEdgeDialog} onClose={() => closeEdgeDialog()} /> */}
+      <NodeDetailDialog showId={showNodeDialog} onClose={() => setShowNodeDialog("")} shellList={job.shells} />
+      <EdgeDetailDialog edge={showEdgeDialog} onClose={() => setShowEdgeDialog(undefined)} />
     </section>
   );
 };

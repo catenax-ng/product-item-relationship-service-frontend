@@ -1,7 +1,78 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders the tombstone information 1`] = `
+exports[`renders a data success state 1`] = `
 <div>
+  <section>
+    <div
+      class="irs-visualization MuiBox-root css-xi606m"
+    >
+      <div
+        class="MuiBox-root css-0"
+      >
+        <div
+          class="irs-visualization-header MuiBox-root css-0"
+        >
+          <h5>
+            content.irs.visualization.title
+          </h5>
+          <button
+            class="MuiButtonBase-root MuiIconButton-root MuiIconButton-colorSecondary MuiIconButton-sizeMedium css-1gws2xf-MuiButtonBase-root-MuiIconButton-root"
+            style="align-self: right;"
+            tabindex="0"
+            type="button"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+              data-testid="FullscreenIcon"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"
+              />
+            </svg>
+            <span
+              class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+            />
+          </button>
+        </div>
+        <div
+          class="Canvas-module_container__22cN4 canvas Canvas-module_pannable__1d7xd"
+          style="height: 800px; width: 100%;"
+        >
+          <svg
+            height="2000"
+            id="ref-1"
+            width="2000"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <marker
+                id="end-arrow"
+                markerHeight="8"
+                markerWidth="8"
+                orient="auto"
+                refX="8"
+                viewBox="0 -4 8 8"
+              >
+                <path
+                  class="Arrow-module_arrow__aEgOT"
+                  d="M0,-4L8,0L0,4"
+                  transform="translate(0, 0) rotate(0)"
+                />
+              </marker>
+            </defs>
+            <g
+              opacity="0"
+              style="transform: scale(0); transform-origin: 0px 0px;"
+              transform-origin="0px 0px"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
   <section
     style="padding: 34px 20px;"
   >
@@ -238,7 +309,7 @@ exports[`renders the tombstone information 1`] = `
             <div
               class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-vgqnfl-MuiGrid-root"
             >
-              2022-02-03 15:48:54
+              2022-02-03 14:48:54
             </div>
           </div>
           <hr
@@ -255,7 +326,7 @@ exports[`renders the tombstone information 1`] = `
             <div
               class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-vgqnfl-MuiGrid-root"
             >
-              2022-02-03 15:48:54
+              2022-02-03 14:48:54
             </div>
           </div>
           <hr
@@ -272,7 +343,7 @@ exports[`renders the tombstone information 1`] = `
             <div
               class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-vgqnfl-MuiGrid-root"
             >
-              2022-02-03 15:48:54
+              2022-02-03 14:48:54
             </div>
           </div>
           <hr
@@ -289,7 +360,7 @@ exports[`renders the tombstone information 1`] = `
             <div
               class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-vgqnfl-MuiGrid-root"
             >
-              2022-02-03 15:48:54
+              2022-02-03 14:48:54
             </div>
           </div>
           <hr
@@ -561,5 +632,83 @@ exports[`renders the tombstone information 1`] = `
       </div>
     </div>
   </section>
+  <section>
+    <div
+      class="irs-tombstones-details MuiBox-root css-0"
+    >
+      <div
+        class="irs-tombstones-details-header MuiBox-root css-0"
+      >
+        <div
+          class="MuiBox-root css-0"
+          style="display: inline-block; color: rgb(239, 83, 80); margin-top: 20px;"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-i4bv87-MuiSvgIcon-root"
+            data-testid="ErrorOutlineIcon"
+            focusable="false"
+            style="font-size: 50px; float: left; vertical-align: middle; margin-top: 10px;"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+            />
+          </svg>
+          <h2
+            style="float: left; margin-left: 10px;"
+          >
+            content.irs.dialog.submodelTombstones.title
+          </h2>
+        </div>
+      </div>
+      <div
+        class="irs-tombstones-details-content MuiBox-root css-0"
+      >
+        <div
+          class="MuiBox-root css-0"
+        >
+          <hr
+            class="MuiDivider-root MuiDivider-fullWidth css-1pdy5v-MuiDivider-root"
+          />
+          <div
+            class="MuiGrid-root MuiGrid-container css-15v7om4-MuiGrid-root"
+          >
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-1osj8n2-MuiGrid-root"
+            >
+              content.irs.dialog.submodelTombstones.lastAttempt:
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-vgqnfl-MuiGrid-root"
+            >
+              2022-02-03 14:48:54
+            </div>
+          </div>
+          <hr
+            class="MuiDivider-root MuiDivider-fullWidth css-1pdy5v-MuiDivider-root"
+          />
+          <div
+            class="MuiGrid-root MuiGrid-container css-15v7om4-MuiGrid-root"
+          >
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-1osj8n2-MuiGrid-root"
+            >
+              content.irs.dialog.submodelTombstones.errorDetail:
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-6 css-vgqnfl-MuiGrid-root"
+            >
+              Details to reason of Failure
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 `;
+
+exports[`renders a error state 1`] = `<div />`;
+
+exports[`renders a loading state 1`] = `<div />`;

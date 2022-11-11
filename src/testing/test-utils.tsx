@@ -1,13 +1,15 @@
 import type { PreloadedState } from "@reduxjs/toolkit";
 import { configureStore } from "@reduxjs/toolkit";
-import { render, RenderOptions } from "@testing-library/react";
+import { render, renderHook, RenderOptions } from "@testing-library/react";
 import React, { FC } from "react";
 import { Provider } from "react-redux";
 import { serverEnvReducer } from "../store/serverEnvironment";
 import { AppStore, RootState } from "../store/store";
 
+import userEvent from "@testing-library/user-event";
 import { I18nextProvider } from "react-i18next";
-import { ReactQueryClientProvider } from "../lib";
+import { BrowserRouter } from "react-router-dom";
+import { ReactQueryTestClientProvider } from "../lib";
 import i18n from "./i18n-testconfig";
 
 interface ExtendedRenderOptions extends Omit<RenderOptions, "queries"> {
@@ -27,9 +29,9 @@ export function renderWithProviders(
   const Wrapper: FC<{ children: React.ReactNode }> = ({ children }) => {
     return (
       <I18nextProvider i18n={i18n}>
-        <ReactQueryClientProvider>
+        <ReactQueryTestClientProvider>
           <Provider store={store}>{children}</Provider>
-        </ReactQueryClientProvider>
+        </ReactQueryTestClientProvider>
       </I18nextProvider>
     );
   };
@@ -38,5 +40,22 @@ export function renderWithProviders(
   return { store, ...render(ui, { wrapper: Wrapper, ...renderOptions }) };
 }
 
+export function renderCustomHook<Props, Result>(fn: (props: Props) => Result) {
+  const wrapper: FC<{ children: React.ReactNode }> = ({ children }) => (
+    <ReactQueryTestClientProvider>{children}</ReactQueryTestClientProvider>
+  );
+  return renderHook(fn, { wrapper });
+}
+
+export const renderWithRouter = (ui: React.ReactElement, { route = "/" } = {}) => {
+  window.history.pushState({}, "Test page", route);
+
+  return {
+    user: userEvent.setup(),
+    ...renderWithProviders(ui, { wrapper: BrowserRouter }),
+  };
+};
+
 export * from "@testing-library/react";
 export { renderWithProviders as render };
+export { renderCustomHook as renderHook };

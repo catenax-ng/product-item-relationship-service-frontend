@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the form 1`] = `
+<div>
+  <section>
+    <div
+      class="irs-job-form MuiBox-root css-0"
+    >
+      <div
+        class="irs-job-form-header MuiBox-root css-0"
+      >
+        <h5>
+          content.irs.form.title
+        </h5>
+      </div>
+      <div
+        class="irs-job-form-content MuiBox-root css-0"
+        style="margin: 20px;"
+      >
+        <form>
+          <label
+            class="MuiFormLabel-root MuiInputLabel-root MuiInputLabel-animated MuiFormLabel-colorPrimary MuiInputLabel-root MuiInputLabel-animated css-y7y8hp-MuiFormLabel-root-MuiInputLabel-root"
+          >
+            content.irs.form.requestBodyValues.label
+          </label>
+          <div
+            class="MuiFormControl-root MuiFormControl-fullWidth MuiTextField-root css-wb57ya-MuiFormControl-root-MuiTextField-root"
+          >
+            <div
+              class="MuiInputBase-root MuiFilledInput-root MuiFilledInput-underline MuiInputBase-colorPrimary MuiInputBase-fullWidth MuiInputBase-formControl MuiInputBase-multiline css-1ra8cd2-MuiInputBase-root-MuiFilledInput-root"
+            >
+              <textarea
+                aria-describedby=":r0:-helper-text"
+                aria-invalid="false"
+                class="MuiInputBase-input MuiFilledInput-input MuiInputBase-inputMultiline css-7209ej-MuiInputBase-input-MuiFilledInput-input"
+                id=":r0:"
+                maxlength="1000"
+                style="height: 0px; overflow: hidden;"
+              >
+                {
+  "aspects": [
+    "AssemblyPartRelationship",
+    "SerialPartTypization"
+  ],
+  "bomLifecycle": "asBuilt",
+  "collectAspects": true,
+  "direction": "downward",
+  "depth": 10,
+  "globalAssetId": "urn:uuid:d387fa8e-603c-42bd-98c3-4d87fef8d2bb"
+}
+              </textarea>
+              <textarea
+                aria-hidden="true"
+                class="MuiInputBase-input MuiFilledInput-input MuiInputBase-inputMultiline css-7209ej-MuiInputBase-input-MuiFilledInput-input"
+                readonly=""
+                style="visibility: hidden; position: absolute; overflow: hidden; height: 0px; top: 0px; left: 0px; transform: translateZ(0); padding: 0px; width: 100%;"
+                tabindex="-1"
+              />
+            </div>
+            <p
+              class="MuiFormHelperText-root MuiFormHelperText-sizeMedium MuiFormHelperText-contained MuiFormHelperText-filled css-u5ud9e-MuiFormHelperText-root"
+              id=":r0:-helper-text"
+            >
+              246/1000
+            </p>
+          </div>
+        </form>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedSecondary MuiButton-sizeMedium MuiButton-containedSizeMedium css-zcbmsk-MuiButtonBase-root-MuiButton-root"
+          style="margin-top: 20px;"
+          tabindex="0"
+          type="button"
+        >
+          content.irs.form.sendButton
+          <span
+            class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+  </section>
+</div>
+`;

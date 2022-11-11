@@ -24,13 +24,9 @@ import { NodeData } from "reaflow";
 import { Shell, SubmodelDescriptor } from "../../../../../types/jobs";
 import { SubmodelDetailCard } from "./submodelDetailCard";
 
-interface props {
-  shell: NodeDataEx;
-}
-
 interface NodeDataEx extends NodeData, Shell {}
 
-export const NodeTemplate = ({ shell }: props) => {
+export const NodeTemplate: React.FC<{ shell: NodeDataEx; onClick: (id: string) => void }> = ({ shell, onClick }) => {
   const { spacing } = useTheme();
 
   function compare(a: SubmodelDescriptor, b: SubmodelDescriptor) {
@@ -62,7 +58,9 @@ export const NodeTemplate = ({ shell }: props) => {
 
         {sortedSubmodelDescriptors.map((n: SubmodelDescriptor) => {
           //Todo: Check for errors and add them to the object
-          return <SubmodelDetailCard key={uniqueId(n.identification)} submodel={n} aasId={shell.id} />;
+          return (
+            <SubmodelDetailCard key={uniqueId(n.identification)} submodel={n} aasId={shell.id} onClick={onClick} />
+          );
         })}
       </Box>
     </>

@@ -8,3 +8,11 @@ window.matchMedia = jest.fn().mockImplementation((query) => {
     removeListener: jest.fn(),
   };
 });
+/**
+ * These are needed for reaflow visuaisation library
+ * https://github.com/reaviz/reaflow/issues/79
+ */
+import { ResizeObserver } from "@juggle/resize-observer";
+
+window.ResizeObserver = ResizeObserver;
+Element.prototype.scrollTo = jest.fn();

@@ -5,7 +5,9 @@ import { serverConfig } from "../constants/serverConfig";
 
 export type AvailableServerEnvironments = keyof typeof serverConfig;
 
-const initialState = {
+const initialState: {
+  serverEnv: AvailableServerEnvironments;
+} = {
   serverEnv: "DEV",
 };
 

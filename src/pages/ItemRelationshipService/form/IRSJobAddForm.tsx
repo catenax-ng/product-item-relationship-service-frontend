@@ -3,6 +3,8 @@ import { Box } from "@mui/material";
 import { Button } from "cx-portal-shared-components";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
+import { serverConfig } from "../../../constants/serverConfig";
+import { useAppSelector } from "../../../store/store";
 import { IRSJobAddFormTextfield } from "./components/IRSJobAddFormTextfield";
 
 type DefaultFormFieldValuesType = {
@@ -10,8 +12,14 @@ type DefaultFormFieldValuesType = {
   Environment: string;
 };
 
+const useGetCurrentServerUrl = () => {
+  const { serverEnv } = useAppSelector((state) => state.serverEnvReducer);
+  return serverConfig[serverEnv].value;
+};
+
 export const IRSJobAddForm = () => {
   const { t } = useTranslation();
+  const serverUrl = useGetCurrentServerUrl();
 
   const testJob = {
     aspects: ["AssemblyPartRelationship", "SerialPartTypization"],
@@ -24,7 +32,7 @@ export const IRSJobAddForm = () => {
 
   const defaultFormFieldValues = {
     RequestBodyValues: JSON.stringify(testJob, null, 2),
-    Environment: "https://irs.dev.demo.catena-x.net/irs/",
+    Environment: serverUrl,
   };
 
   const {
@@ -74,7 +82,7 @@ export const IRSJobAddForm = () => {
             margin: "20px",
           }}
         >
-          <form>
+          <form onSubmit={handleSubmit(onFormSubmit)}>
             <IRSJobAddFormTextfield
               {...{
                 control,

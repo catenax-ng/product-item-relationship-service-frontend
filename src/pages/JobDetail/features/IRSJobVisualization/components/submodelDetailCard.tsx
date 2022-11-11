@@ -21,16 +21,18 @@ import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import SourceIcon from "@mui/icons-material/Source";
 import { Box } from "@mui/material";
 
-import { SubmodelDescriptors } from "features/irs/types";
-import uniqueId from "lodash/uniqueId";
 import { Button } from "cx-portal-shared-components";
 
+import uniqueId from "lodash/uniqueId";
+import { SubmodelDescriptor } from "../../../../../types/jobs";
+
 interface props {
-  submodel: SubmodelDescriptors;
+  submodel: SubmodelDescriptor;
   aasId: string;
+  onClick: (id: string) => void;
 }
 
-export const SubmodelDetailCard = ({ submodel, aasId }: props) => {
+export const SubmodelDetailCard = ({ submodel, aasId, onClick }: props) => {
   // const dispatch = useDispatch()
 
   const endpointAddress = submodel.endpoints[0].protocolInformation.endpointAddress;
@@ -64,8 +66,8 @@ export const SubmodelDetailCard = ({ submodel, aasId }: props) => {
           variant="contained"
           onClick={(event) => {
             event.preventDefault();
-            // console.log('CLICK', aasId)
-            // dispatch(jobSlice.actions.openNodeDialog(aasId))
+
+            onClick(aasId);
           }}
         >
           {submodel.idShort}
