@@ -1,0 +1,132 @@
+@startuml
+allowmixing
+
+class jobRequest {
+}
+
+class job {
+aspects: String,
+bomLifecycle: String,
+collectAspects: Boolean,
+direction: String,
+depth: Number,
+globalAssetId: String (UUID),
++ jobStatus: JobState ("Finished"),
+createdOn: DateTime,
+requestURL: URI,
+startedOn: DateTime,
+jobFinished": DateTime,
+owner: String,
+}
+
+class jobState {
+INITIAL,
+IN_PROGRESS,
+COMPLETED,
+CANCELED,
+ERROR,
+}
+
+class jobList {
+Id: String,
+Job Start: DateTime,
+Job End: DateTime,
+Status: String,
+}
+
+class Visualization {
+(Debugging view)
+}
+
+class VisualizationNode {
+globalAssetId: String,
+identification: String(UUID),
++specificAssetIds: Array - String,
+submodelDescriptors: Array - String,
+id: String (UUID),
+}
+
+class IRSJobDetails {
+Job ID: String (UUID),
+Global Asset ID: String(UUID),
+Job State: String,
+Exception: Boolean,
+Job created on: DateTime,
+Job started on: DateTime,
+Job last modified on: DateTime,
+Job completed on: DateTime,
+Job owner: String (ID),
+Job parameter: String,
++ Job summary: Array - String,
+}
+
+class jobSummary {
+  asyncFetchedItems: Array, 
+  running: Number,
+  completed: Number,
+  failed: Number,
+}
+
+class VisualizationNodeList {
++ Specific asset IDs: Array - String,
+AssemblyPartRelationship aspect: String,
+Submodel Payload: JSON,
+MaterialForRecycling aspect: String,
+}
+
+class IRSResult {
+
+}
+
+class submodelDescriptors {
+description: Array - String,
+endpoints: Array,
+protocolInformation: String,
+idShort: String,
+identification: String(UUID),
+semanticId: String,
+endpoints: Array - String,
+}
+
+class endpoints {
+protocolInformation: Object - String,
+endpointAddress: String,
+endpointProtocol: String,
+endpointProtocolVersion: String,
+}
+
+class submodelTombstones {
+timestamp: DateTime,
+Error Details: json,
+}
+
+class specificAssetIds {
+key: String,
+subjectId: String, 
+value: String,
+semanticId: String,
+}
+
+
+jobRequest -- job
+job <-- jobState
+job <-- jobList
+
+jobRequest -> Visualization
+
+IRSResult <-- VisualizationNode
+Visualization <-- submodelTombstones 
+Visualization  <-- IRSResult
+IRSJobDetails --> Visualization
+
+VisualizationNode <- VisualizationNodeList 
+
+
+jobSummary -> IRSJobDetails 
+IRSJobDetails -> VisualizationNode 
+
+submodelDescriptors --> VisualizationNodeList 
+specificAssetIds --> VisualizationNodeList 
+
+endpoints --> submodelDescriptors 
+@enduml

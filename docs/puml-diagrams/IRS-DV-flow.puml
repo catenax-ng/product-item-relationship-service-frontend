@@ -1,0 +1,16 @@
+@startuml
+
+user -> "Select ENV": localhost
+"Select ENV" -> "Keycloak": Select ENV: Dev/Int/Prod
+"Keycloak" -> "Fill parameters"
+"Fill parameters" -> "Request Job": Fill search parameters
+"Request Job" -> "IRS API": Request to find Job by parameters
+
+"Keycloak" -> "Job list": Search history
+
+"IRS API" --> "Fill parameters": Cancel Job
+"IRS API" -> "Job list": Save Job in a list
+"IRS API" --> user: Success jobID (UUID)
+"IRS API" -> user: Error
+
+@enduml

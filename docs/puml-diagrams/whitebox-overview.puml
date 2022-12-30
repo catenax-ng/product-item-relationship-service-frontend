@@ -1,0 +1,34 @@
+@startuml
+title: IRS-DV app
+skinparam actorStyle awesome
+actor consumer as user
+
+component "Shared services" {
+component "KeyCloak" as keycloak
+boundary "token" as token
+component "IRS API" as api
+}
+
+component "IRS-DV app FRONTEND" as irsdv <<Sytem>> {
+
+component App as mainPage {
+node "Fill search parameters" as parameters 
+node "Select Environment / Log in" as env
+node "Find Job / submit" as button
+node "Single Job visualization and information" as visual
+node "Job list" as list
+} 
+}
+
+
+user -> env
+env .> keycloak
+keycloak <..> token
+keycloak .> parameters
+
+parameters ..> button
+button ..> api
+api ..> list
+list ..> visual
+
+@enduml

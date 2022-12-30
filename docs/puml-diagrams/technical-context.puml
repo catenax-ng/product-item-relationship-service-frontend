@@ -1,0 +1,10 @@
+@startuml
+consumer as user
+component "IRS-DV" as irsdv << System >>
+node "Catena-X network" as catenaX
+entity "IRS API" as api
+
+user - irsdv
+irsdv -- api 
+irsdv - catenaX
+@enduml

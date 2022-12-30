@@ -1,0 +1,48 @@
+@startuml
+title: IRS-DV app job request
+allowmixing
+
+
+component "IRS-DV app FRONTEND" as irsdv  << System >> {
+
+component App as mainPage {
+component "ItemRelationshipService" as request  << conponent >>{
+
+component "IRSSelectServerEnv" as env << conponent >> {
+node dev
+node int
+node prod
+}
+
+component "IRSJobAddForm" as parameters  << conponent >> {
+json JSON {
+  "aspects": [
+    "AssemblyPartRelationship",
+    "SerialPartTypization"
+  ],
+  "bomLifecycle": "asBuilt",
+  "collectAspects": true,
+  "direction": "downward",
+  "depth": 10,
+  "globalAssetId": "urn:uuid:d387fa8e-603c-42bd-98c3-4d87fef8d2bb"
+}
+}
+component "Find Job" as button
+
+component "IRSJobOverview" as table << component >>
+}
+
+}
+
+component "Shared services" {
+component "API" as api
+}
+
+
+env ..> parameters 
+parameters ..> button
+button <.> api
+button ..> table
+
+
+@enduml

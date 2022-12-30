@@ -1,0 +1,27 @@
+@startuml
+allowmixing
+
+component "IRSJobAddForm" as parameters  << conponent >> {
+json JSON {
+  "aspects": [
+    "AssemblyPartRelationship",
+    "SerialPartTypization"
+  ],
+  "bomLifecycle": "asBuilt",
+  "collectAspects": true,
+  "direction": "downward",
+  "depth": 10,
+  "globalAssetId": "urn:uuid:d387fa8e-603c-42bd-98c3-4d87fef8d2bb"
+  }
+}
+
+component "JobList" as table 
+
+component "API" as api
+
+
+parameters .> api
+api .> table
+
+
+@enduml

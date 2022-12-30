@@ -1,0 +1,31 @@
+@startuml
+skinparam actorStyle awesome
+
+title: IRS-DV app flow
+
+user as User 
+node "Login through the Catena-X network" as login
+node "Select environment" as env
+node "Fill parameters" as fill
+node "Item Relationship Service Job Store" as store
+node "Completed" as completed
+node "Canceled" as cancel
+node "Initializing" as init
+node "Visualization" as ui
+node "Item Relationship Service Job Details" as details
+
+
+User --> env
+env--> login
+login --> fill  : success
+fill --> store: Build data chain
+store --> completed
+store -> cancel
+store -> init
+init ->cancel
+init --> completed
+completed --> ui
+ui --> details
+
+
+@enduml
