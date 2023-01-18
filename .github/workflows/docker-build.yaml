@@ -42,6 +42,14 @@ jobs:
         id: app_version
         run: echo "::set-output name=prefix::$(date +'%Y-%m-%d').${{ github.run_number }}."
       
+      # Extract metadata (tags, labels) for Docker
+      # https://github.com/docker/metadata-action
+      - name: Generate docker image tags and labels
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+
       - name: Set docker image version
         run: |
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
@@ -54,14 +62,6 @@ jobs:
           echo IMAGE_ID=$IMAGE_ID
           echo $VERSION
           echo "DOCKER_IMAGE_TAG=$VERSION" >> $GITHUB_ENV
-
-      # Extract metadata (tags, labels) for Docker
-      # https://github.com/docker/metadata-action
-      - name: Generate docker image tags and labels
-        id: meta
-        uses: docker/metadata-action@v3
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
