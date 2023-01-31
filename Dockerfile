@@ -10,7 +10,7 @@ COPY package-lock.json .
 
 RUN npm install
 
-COPY ./ .
+COPY . .
 
 RUN chown -R app /opt/app
 USER app
