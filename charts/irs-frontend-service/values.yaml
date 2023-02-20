@@ -39,14 +39,14 @@ autoscaling:
 registry:
   vite:
     manual:
-      url: https://github.com/catenax-ng/product-item-relationship-service-frontend/blob/main/docs/userManual.md
+      url: 
   url:
-    local: http://localhost:8080
+    local: 
 keycloak:
-  url: http://localhost:4011/connect/token
+  url: 
   grand:
-    type: client_credentials
-  scope: catena-scope
+    type: 
+  scope: 
   client:
-    id: catena-client-id
-    secret: catena-client-secret
+    id: 
+    secret: 
