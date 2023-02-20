@@ -38,7 +38,7 @@ autoscaling:
 
 registry:
   vite:
-    manual: 
+    manual:
       url: https://github.com/catenax-ng/product-item-relationship-service-frontend/blob/main/docs/userManual.md
   url:
     local: http://localhost:8080
