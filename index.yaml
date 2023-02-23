@@ -3,6 +3,17 @@ entries:
   irs-frontend-service:
   - apiVersion: v2
     appVersion: 1.0.0
+    created: "2023-02-23T08:48:53.347992375Z"
+    description: IRS Frontend Service
+    digest: a1c894e31f3a1ef965d5440496bd3573effaeb2bd4c224ebdf25bce04798ab40
+    icon: https://github.com/catenax-ng/product-item-relationship-service-frontend/blob/main/favicon.ico
+    name: irs-frontend-service
+    type: application
+    urls:
+    - https://github.com/catenax-ng/product-item-relationship-service-frontend/releases/download/irs-frontend-service-0.0.3/irs-frontend-service-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: 1.0.0
     created: "2023-02-22T09:21:08.061110272Z"
     description: IRS Frontend Service
     digest: 2ceb1178461c244caa76ec49bab495e63ba47e9f1d0130d452fc4d8d5569a5e2
@@ -23,4 +34,4 @@ entries:
     urls:
     - https://github.com/catenax-ng/product-item-relationship-service-frontend/releases/download/irs-frontend-service-0.0.1/irs-frontend-service-0.0.1.tgz
     version: 0.0.1
-generated: "2023-02-22T09:21:08.061118872Z"
+generated: "2023-02-23T08:48:53.348006276Z"
