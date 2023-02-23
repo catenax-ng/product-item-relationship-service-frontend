@@ -186,6 +186,7 @@ The IRS-DV retrieves data from the Catena-X network (using the necessary infrast
 ## Technical context
 
 ![technical context](./images/puml-svg/technical-context.svg)
+
 ==TODO: IRS-DV - IRS - CX Network==
 
 ## Component overview
@@ -257,6 +258,7 @@ Full backend services graph you can find at **[IRS team](https://catenax-ng.gith
 ### Component diagram
 
 ![whitebox overview](./images/ComponentOverview.png)
+
 ==TODO: Can the arrows be arranged better?==
 
 ### Component description
@@ -346,6 +348,7 @@ GitHub contains the application source code as well as the Helm charts used for 
 ## Local deployment
 
 For information on how to run the application locally, please check the README documentation in GitHub: https://github.com/catenax-ng/product-item-relationship-service-frontend/blob/main/docs/FirstSteps.md
+
 ==TODO: Link does not work==
 
 ## View Levels
@@ -357,12 +360,15 @@ For information on how to run the application locally, please check the README d
 The isolated environment contains the IRS-DV as well as the surrounding services, excluding the external Keycloak.
 
 isolated (IMAGE)
+
 ==TODO: Image?==
+
 ### Integrated environment
 
 The integrated environment contains the IRS and is integrated with the rest of the Catena-X network.
 
 integrated (IMAGE)
+
 ==TODO: Image?==
 
 ## Level 1 - IRS application
@@ -370,6 +376,7 @@ integrated (IMAGE)
 This section focuses only on the IRS-DV itself, detached from its neighbors. It shows the resources deployed in Kubernetes for the IRS.
 
 irs resources (IMAGE)
+
 ==TODO: Image?==
 **Pod**
 
@@ -414,6 +421,7 @@ A job can be in one of the following states:
 ### IRS API
 
 ==TODO:This Chapter needs rework Statement is wrong==
+
 The IRS-DV accesses the Catena-X network via the EDC consumer connector (Keycloak).
 System are using RESTful calls over HTTP(S). Where central authentication is required, a common Keycloak instance is used. We are only using "GET" protocol from API.
 
@@ -440,6 +448,7 @@ Functional errors occur when there is a problem with the data that is being proc
 ### Build, test, deploy
 
 The IRS-DV is built using React and utilizes all the standard concepts of it. Test execution is part of the build process and a minimum test coverage of 80% is enforced.
+
 ==TODO: Still open==
 
 ```
@@ -453,7 +462,9 @@ Although the Docker image can be deployed in various ways, the standard solution
 ### Configuration - Helm Chart
 
 The most relevant config properties are exposed as environment variables and must be set in the Helm chart so the application can run at all. Check the IRS Helm chart in Git for all available variables.
+
 ==TODO: Add Link to documentation==
+  
   <br>
   <br>
 
@@ -463,6 +474,7 @@ The most relevant config properties are exposed as environment variables and mus
 <br>
 
 # Quality requirements
+
 
 ==TODO: rework needed==
 
