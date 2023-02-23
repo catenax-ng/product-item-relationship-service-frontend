@@ -1,49 +1,72 @@
 # Architecture documentation (arc42)
 
-    // TODO: Table of contents need to be done. Please mark [X] in front of topic when its done. After every topic is done, we can remove "checkbox"
-
-- [ ] - need overview <br>
-- [x] - done
-
 ## Table of Contents
 
-- [x] [Introduction and goals](#introduction-and-goals)
-  - [x] [Requirements overview](#requirements-overview)
-  - [x] [Quality goals](#quality-goals)
-  - [x] [Stakeholders](#stakeholders)
-- [x] [Architecture constraints](#architecture-constraints)
-  - [x] [Technical Constraints](#technical-constraints)
-  - [x] [Organizational Constraints](#organizational-constraints)
-  - [x] [Political constraints](#political-constraints)
-  - [x] [Development conventions](#development-conventions)
-- [x] [System scope and context](#system-scope-and-context)
-  - [x] [Business context](#business-context)
-  - [x] [Technical context](#technical-context)
-- [x] [Solution strategy](#solution-strategy)
-  - [x] [Introduction](#introduction)
-  - [x] [Technology](#technology)
-  - [x] [Structure](#structure)
-- [x] [Building block view](#building-block-view)
-  - [x] [Whitebox overall system](#whitebox-overall-system)
-  - [x] [Level 1](#level-1)
-  - [x] [IRS API](#references)
-- [x] [Runtime view](#runtime-view)
-  - [x] [Overall](#overall)
-  - [x] [Scenario 1: Create a job](#scenario-1-find-a-job)
-- [x] [Deployment view](#deployment-view) still unclear whole topic
-  - [x] [Local deployment](#local-deployment)
-  - [x] [View Levels](#view-levels)
-- [x] [Cross-cutting concepts](#cross-cutting-concepts)
-  - [x] [Domain concepts](#domain-concepts)
-  - [x] [Safety and security concepts](#safety-and-security-concepts)
-  - [x] ["Under-the-hood" concepts](#under-the-hood-concepts)
-  - [ ] [Development concepts](#development-concepts)
-  - [x] [Operational concepts](#operational-concepts)
-- [x] [Quality requirements](#quality-requirements)
-  - [x] [List of requirements](#list-of-requirements)
-- [x] [Glossary](#glossary)
-
-<br>
+- [Architecture documentation (arc42)](#architecture-documentation-arc42)
+  - [Table of Contents](#table-of-contents)
+- [Introduction and goals](#introduction-and-goals)
+  - [Requirements overview](#requirements-overview)
+    - [What is the Item Relationship Service Debugging View?](#what-is-the-item-relationship-service-debugging-view)
+    - [Substantial Features](#substantial-features)
+  - [Quality goals](#quality-goals)
+- [Architecture constraints](#architecture-constraints)
+  - [Technical Constraints](#technical-constraints)
+  - [Organizational Constraints](#organizational-constraints)
+  - [Political constraints](#political-constraints)
+  - [Development conventions](#development-conventions)
+  - [Code analysis, linting and code coverage](#code-analysis-linting-and-code-coverage)
+- [System scope and context](#system-scope-and-context)
+  - [Business context](#business-context)
+    - [Catena-X network](#catena-x-network)
+  - [Technical context](#technical-context)
+  - [Component overview](#component-overview)
+    - [IRS-API](#irs-api)
+    - [IRS-DV system](#irs-dv-system)
+- [Solution strategy](#solution-strategy)
+  - [Introduction](#introduction)
+  - [Technology](#technology)
+  - [Structure](#structure)
+- [Building block view](#building-block-view)
+  - [Whitebox overall system](#whitebox-overall-system)
+    - [Component diagram](#component-diagram)
+    - [Component description](#component-description)
+  - [Level 1](#level-1)
+    - [Component diagram](#component-diagram-1)
+    - [Component description](#component-description-1)
+  - [IRS API](#irs-api-1)
+    - [References](#references)
+    - [IRS interaction diagram](#irs-interaction-diagram)
+- [Runtime view](#runtime-view)
+  - [Overall](#overall)
+  - [Scenario 1: Create a job](#scenario-1-create-a-job)
+    - [Overview](#overview)
+- [Deployment view](#deployment-view)
+  - [Local deployment](#local-deployment)
+  - [View Levels](#view-levels)
+  - [Level 0 - Cluster overview](#level-0---cluster-overview)
+    - [Isolated environment](#isolated-environment)
+    - [Integrated environment](#integrated-environment)
+  - [Level 1 - IRS application](#level-1---irs-application)
+- [Cross-cutting concepts](#cross-cutting-concepts)
+  - [Domain concepts](#domain-concepts)
+    - [Domain model](#domain-model)
+    - [JobStatus](#jobstatus)
+    - [Job Response Datamodel](#job-response-datamodel)
+  - [Safety and security concepts](#safety-and-security-concepts)
+    - [Authentication / Authorization](#authentication--authorization)
+    - [IRS API](#irs-api-2)
+  - [Credentials](#credentials)
+  - ["Under-the-hood" concepts](#under-the-hood-concepts)
+    - [Exception and error handling](#exception-and-error-handling)
+    - [Technical errors](#technical-errors)
+    - [Functional errors](#functional-errors)
+  - [Development concepts](#development-concepts)
+    - [Build, test, deploy](#build-test-deploy)
+  - [Operational concepts](#operational-concepts)
+    - [Configuration - Helm Chart](#configuration---helm-chart)
+- [Quality requirements](#quality-requirements)
+  - [List of requirements](#list-of-requirements)
+- [Glossary](#glossary)
 
 ---
 
@@ -150,7 +173,9 @@ The IRS-DV acts as a middleware between consumers and manufacturers. This sectio
 
 ![business context overview](./images/puml-svg/business-context.svg)
 
-### Consumer
+==TODO: IRS-DV - IRS - CX Network==
+
+The end user is searching for errors in the data chain of an IRS-job, either ongoing or completed. In order to access this data, the end user must obtain valid credentials from the Catena-X IAM system.
 
 The consumer is end user who is searching and looking for a errors in all data chain of the Catena-X network. He need to get valid credentials issued by the Catena-X IAM.
 
@@ -161,6 +186,7 @@ The IRS-DV retrieves data from the Catena-X network (using the necessary infrast
 ## Technical context
 
 ![technical context](./images/puml-svg/technical-context.svg)
+==TODO: IRS-DV - IRS - CX Network==
 
 ## Component overview
 
@@ -185,7 +211,7 @@ The IRS-DV system is created to search and show all related components of search
 
 | Quality goal                  | Matching approaches in the solution                                                                                                                                                                       |
 | ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| application reliability       | <ul><li>only data source is the Catena-X network, data is fetched from IRS API</li><li>IRS-DV can be hosted decentralized by every participant by being an open source reference implementation</li></ul> |
+| application reliability       | <ul><li>data is fetched from IRS API</li><li>IRS-DV can be hosted decentralized by every participant by being an open source reference implementation</li></ul> |
 | base security measures        | <ul><li>automatic static and dynamic code analysis tools as part of the pipeline</li></ul>                                                                                                                |
 | cloud agnostic solution       | <ul><li>IRS-DV is provided as a Docker image</li><li>Helm charts assist in deploying the application in any Kubernetes environment</li></ul>                                                              |
 | running reference application | <ul><li>Working application can be used as reference by anyone due to open source publishing </li></ul>                                                                                                   |
@@ -230,7 +256,8 @@ Full backend services graph you can find at **[IRS team](https://catenax-ng.gith
 
 ### Component diagram
 
-![whitebox overview](./images/puml-svg/whitebox%20overview.svg)
+![whitebox overview](./images/ComponentOverview.png)
+==TODO: Can the arrows be arranged better?==
 
 ### Component description
 
@@ -319,6 +346,7 @@ GitHub contains the application source code as well as the Helm charts used for 
 ## Local deployment
 
 For information on how to run the application locally, please check the README documentation in GitHub: https://github.com/catenax-ng/product-item-relationship-service-frontend/blob/main/docs/FirstSteps.md
+==TODO: Link does not work==
 
 ## View Levels
 
@@ -329,18 +357,20 @@ For information on how to run the application locally, please check the README d
 The isolated environment contains the IRS-DV as well as the surrounding services, excluding the external Keycloak.
 
 isolated (IMAGE)
-
+==TODO: Image?==
 ### Integrated environment
 
 The integrated environment contains the IRS and is integrated with the rest of the Catena-X network.
 
 integrated (IMAGE)
+==TODO: Image?==
 
 ## Level 1 - IRS application
 
 This section focuses only on the IRS-DV itself, detached from its neighbors. It shows the resources deployed in Kubernetes for the IRS.
 
 irs resources (IMAGE)
+==TODO: Image?==
 **Pod**
 
 This is the actual IRS Docker image which runs as a container. The ports are only available internally and can be opened up with the Service.
@@ -383,6 +413,7 @@ A job can be in one of the following states:
 
 ### IRS API
 
+==TODO:This Chapter needs rework Statement is wrong==
 The IRS-DV accesses the Catena-X network via the EDC consumer connector (Keycloak).
 System are using RESTful calls over HTTP(S). Where central authentication is required, a common Keycloak instance is used. We are only using "GET" protocol from API.
 
@@ -409,6 +440,7 @@ Functional errors occur when there is a problem with the data that is being proc
 ### Build, test, deploy
 
 The IRS-DV is built using React and utilizes all the standard concepts of it. Test execution is part of the build process and a minimum test coverage of 80% is enforced.
+==TODO: Still open==
 
 ```
 TODO: Add info about Helm chart
@@ -421,7 +453,7 @@ Although the Docker image can be deployed in various ways, the standard solution
 ### Configuration - Helm Chart
 
 The most relevant config properties are exposed as environment variables and must be set in the Helm chart so the application can run at all. Check the IRS Helm chart in Git for all available variables.
-
+==TODO: Add Link to documentation==
   <br>
   <br>
 
@@ -431,6 +463,8 @@ The most relevant config properties are exposed as environment variables and mus
 <br>
 
 # Quality requirements
+
+==TODO: rework needed==
 
 The quality scenarios in this section depict the fundamental quality goals as well as other required quality properties. They allow the evaluation of decision alternatives.
 
