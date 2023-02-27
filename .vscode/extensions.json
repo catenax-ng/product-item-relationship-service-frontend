@@ -5,7 +5,7 @@
   // List of extensions which should be recommended for users of this workspace.
   "recommendations": [
     "esbenp.prettier-vscode",
-    "Orta.vscode-jest",
+    "ZixuanChen.vitest-explorer",
     "streetsidesoftware.code-spell-checker",
     "dbaeumer.vscode-eslint"
   ],
