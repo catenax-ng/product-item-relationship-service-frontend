@@ -210,12 +210,12 @@ The IRS-DV system is created to search and show all related components of search
 
 ## Introduction
 
-| Quality goal                  | Matching approaches in the solution                                                                                                                                                                       |
-| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Quality goal                  | Matching approaches in the solution                                                                                                                             |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | application reliability       | <ul><li>data is fetched from IRS API</li><li>IRS-DV can be hosted decentralized by every participant by being an open source reference implementation</li></ul> |
-| base security measures        | <ul><li>automatic static and dynamic code analysis tools as part of the pipeline</li></ul>                                                                                                                |
-| cloud agnostic solution       | <ul><li>IRS-DV is provided as a Docker image</li><li>Helm charts assist in deploying the application in any Kubernetes environment</li></ul>                                                              |
-| running reference application | <ul><li>Working application can be used as reference by anyone due to open source publishing </li></ul>                                                                                                   |
+| base security measures        | <ul><li>automatic static and dynamic code analysis tools as part of the pipeline</li></ul>                                                                      |
+| cloud agnostic solution       | <ul><li>IRS-DV is provided as a Docker image</li><li>Helm charts assist in deploying the application in any Kubernetes environment</li></ul>                    |
+| running reference application | <ul><li>Working application can be used as reference by anyone due to open source publishing </li></ul>                                                         |
 
 ## Technology
 
@@ -265,12 +265,15 @@ Full backend services graph you can find at **[IRS team](https://catenax-ng.gith
 
 | Components          | Description                                                                                      |
 | ------------------- | ------------------------------------------------------------------------------------------------ |
+| **Welcome Page**    |                                                                                                  |
 | IRSSelectServerEnv  | Select server environmental between given servers                                                |
+| **Overview Page**   |                                                                                                  |
 | IRSJobAddForm       | In this component, you can select settings according to which globalAssetId you are looking for. |
 | IRSJobOverview      | IRS-DV history by search parameters                                                              |
+| **Detail Page**     |                                                                                                  |
 | IRSJobVisualization | IRS-DV visualization based on search parameters. We show all related nodes.                      |
 | IRSJobTombstones    | IRS-DV cached errors                                                                             |
-| IRSJobStore         | Show all grid for filtered history                                                               |
+| **Other**           |                                                                                                  |
 | ErrorPage           | Catch errors(router error and ... ) and show error page                                          |
 
 ## Level 1
@@ -347,9 +350,7 @@ GitHub contains the application source code as well as the Helm charts used for 
 
 ## Local deployment
 
-For information on how to run the application locally, please check the README documentation in GitHub: https://github.com/catenax-ng/product-item-relationship-service-frontend/blob/main/docs/FirstSteps.md
-
-==TODO: Link does not work==
+For information on how to run the application locally, please check the README documentation in GitHub: https://github.com/catenax-ng/product-item-relationship-service-frontend
 
 ## View Levels
 
@@ -420,10 +421,9 @@ A job can be in one of the following states:
 
 ### IRS API
 
-==TODO:This Chapter needs rework Statement is wrong==
 
-The IRS-DV accesses the Catena-X network via the EDC consumer connector (Keycloak).
-System are using RESTful calls over HTTP(S). Where central authentication is required, a common Keycloak instance is used. We are only using "GET" protocol from API.
+
+The IRS-DV accesses the IRS API by using RESTful calls over HTTP(S). Authentication is handled by Keycloak. 
 
 ## Credentials
 
@@ -437,11 +437,15 @@ There are two types of potential errors in the IRS-DV:
 
 ### Technical errors
 
-Technical errors occur when there is a problem with the API itself.
+Technical errors occur when there is a problem with the API itself. The errors are handled by react-query and the user receives a visual error message.
 
-### Functional errors
+### Routing errors
 
-Functional errors occur when there is a problem with the data that is being processed or external systems are unavailable and data cannot be sent / fetched as required for the process. While the system might not be able to provide the required function at that moment, it may work with a different dataset or as soon as the external systems recover.
+Since the application is using react-router, it is possible to manually navigate to routes that are invalid. In this case, a seperate "Error Page" is used to display the routing error message.
+
+### Authentication errors
+If an authentication error is encoutered, the previous token is invaidated and user is automatically redirected to the welcome page.
+
 
 ## Development concepts
 
@@ -464,7 +468,7 @@ Although the Docker image can be deployed in various ways, the standard solution
 The most relevant config properties are exposed as environment variables and must be set in the Helm chart so the application can run at all. Check the IRS Helm chart in Git for all available variables.
 
 ==TODO: Add Link to documentation==
-  
+
   <br>
   <br>
 
@@ -474,7 +478,6 @@ The most relevant config properties are exposed as environment variables and mus
 <br>
 
 # Quality requirements
-
 
 ==TODO: rework needed==
 
