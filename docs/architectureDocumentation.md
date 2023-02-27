@@ -59,7 +59,8 @@
   - ["Under-the-hood" concepts](#under-the-hood-concepts)
     - [Exception and error handling](#exception-and-error-handling)
     - [Technical errors](#technical-errors)
-    - [Functional errors](#functional-errors)
+    - [Routing errors](#routing-errors)
+    - [Authentication errors](#authentication-errors)
   - [Development concepts](#development-concepts)
     - [Build, test, deploy](#build-test-deploy)
   - [Operational concepts](#operational-concepts)
@@ -453,11 +454,7 @@ If an authentication error is encoutered, the previous token is invaidated and u
 
 The IRS-DV is built using React and utilizes all the standard concepts of it. Test execution is part of the build process and a minimum test coverage of 80% is enforced.
 
-==TODO: Still open==
-
-```
-TODO: Add info about Helm chart
-```
+==TODO: Still open - add info about helm chart==
 
 Although the Docker image can be deployed in various ways, the standard solution are the provided Helm charts, which describe the required components as well.
 
