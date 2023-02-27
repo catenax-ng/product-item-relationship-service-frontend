@@ -513,8 +513,6 @@ The most relevant config properties are exposed as environment variables and mus
 
 # Quality requirements
 
-==TODO: rework needed==
-
 The quality scenarios in this section depict the fundamental quality goals as well as other required quality properties. They allow the evaluation of decision alternatives.
 
 - Quality attribute: A characteristic of software, or a generic term applying to quality factors, quality subfactors, or metric values.
@@ -531,9 +529,13 @@ The quality scenarios in this section depict the fundamental quality goals as we
 
 ## List of requirements
 
-The Quality Requirements are defined in the ESLint and Prettier configuration. As well as the Sonarcube configuration.
+We are not going to list the requirements here, as they are defined in the configuration files of various tools:
 
-Overall the code should be as low complexity as possible. This is ensured by using smaller functions that are easy to test.
+* Prettier - ensures that the code is formatted consistently
+* ESLint - Ensures that the code follows consistent code conventions
+* Vitest - Is used to test and generate a code coverage report
+* Sonarcube - evaluates and provides a metric of the current state of the code quality. (This is centrally configured and defined)
+
 <br>
 <br>
 
