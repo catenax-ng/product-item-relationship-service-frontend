@@ -175,9 +175,7 @@ The IRS-DV is as a viewer of IRS Jobs. This section describes the environment of
 
 ### End User
 
-==TODO: IRS-DV - IRS - CX Network==
-
-The end user is searching for errors in the data chain of an IRS-job, either ongoing or completed. In order to access this data, the end user must obtain valid credentials from the Catena-X IAM system.
+The end user wants to debug a data chain of an IRS-job, either ongoing or completed. 
 
 ### IRS Job API
 
