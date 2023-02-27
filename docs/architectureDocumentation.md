@@ -18,7 +18,6 @@
 - [System scope and context](#system-scope-and-context)
   - [Business context](#business-context)
     - [End User](#end-user)
-    - [Consumer](#consumer)
     - [IRS Job API](#irs-job-api)
   - [Technical context](#technical-context)
   - [Component overview](#component-overview)
@@ -336,7 +335,6 @@ Full backend services graph you can find at **[IRS team](https://catenax-ng.gith
 
 ![whitebox overview](./images/ComponentOverview.png)
 
-==TODO: Can the arrows be arranged better?==
 
 ### Component description
 
