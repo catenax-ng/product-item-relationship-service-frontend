@@ -6,6 +6,13 @@ This [repository](https://github.com/catenax-ng/k8s-example-argo-cd-project) is 
 
 # Working with this repository
 
+## NPM Scripts
+
+- `npm start`: Starts the local development server
+- `npm test`: Runs tests
+- `npm run test:coverage`: Runs tests + collects collects coverage information
+- `npm run generateApiTypes`: Generates a client-side types to connect to the IRS Jobs API
+
 ## Conventional commits via pre-commit hook
 
 Conventional commits are prepared for this repository but require manual steps after you have cloned this repository 
