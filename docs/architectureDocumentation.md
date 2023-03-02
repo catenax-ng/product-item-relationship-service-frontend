@@ -183,9 +183,7 @@ The IRS-DV retrieves data from the IRS Job API. This connection is mandatory. If
 
 ## Technical context
 
-![technical context](./images/puml-svg/technical-context.svg)
-
-==TODO: IRS-DV - IRS - CX Network==
+![technical context](./images/TechnicalContext.png)
 
 ## Component overview
 
