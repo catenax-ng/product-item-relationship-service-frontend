@@ -44,11 +44,6 @@
     - [References](#references)
 - [Deployment view](#deployment-view)
   - [Local deployment](#local-deployment)
-  - [View Levels](#view-levels)
-  - [Level 0 - Cluster overview](#level-0---cluster-overview)
-    - [Isolated environment](#isolated-environment)
-    - [Integrated environment](#integrated-environment)
-  - [Level 1 - IRS application](#level-1---irs-application)
 - [Cross-cutting concepts](#cross-cutting-concepts)
   - [Domain concepts](#domain-concepts)
     - [Domain model](#domain-model)
@@ -104,13 +99,7 @@ The following table entries define overall IRS-DV quality goals. The order of th
 | Adequate Security Measures      | The IRS-DV is equipped with a basic set of security features and requires users to log in through Keycloak to access the program.                                                                                        |
 |                                 |
 
-<br>
-<br>
-
 [Back to top](#)
-
-<br>
-<br>
 
 # Architecture Constraints
 
@@ -159,13 +148,13 @@ The following table entries define overall IRS-DV quality goals. The order of th
 | SonaCloud  | Code quality and security scanning                              | Configured for use across the Catena-X community                  |
 | Veracode   | Package and security scanning                                   | Global Catena-X configuration.                                    | https://web.analysiscenter.veracode.com/ |
 
-<br>
-<br>
+
+
 
 [Back to top](#)
 
-<br>
-<br>
+
+
 
 # System scope and context
 
@@ -195,13 +184,7 @@ We use a REST API that is made by IRS team and can be used by any system registe
 
 The IRS-DV system is used to list all current and running jobs. It can create new jobs by defining the globalAssetId-parameter and other parameters. In addition, the system presents detailed information on individual jobs in a tree-node structure, making it easy to navigate and locate specific data.
 
-<br>
-<br>
-
 [Back to top](#)
-
-<br>
-<br>
 
 # Solution strategy
 
@@ -221,9 +204,6 @@ The IRS-DV system was developed using the React framework, chosen for its widesp
 The application is hosted using Docker and Kubernetes, which are widely used and compatible with multiple hosting providers, such as AWS, Google Cloud, and Azure.
 
 React-Query was used to make the REST Api provided by the IRS-Jobs easy to integrate.
-
-
-
 
 ### Overview of the dependencies
 
@@ -310,14 +290,7 @@ The IRS-DV has three primary views, which include:
 2. The overview page that allows users to create or list jobs.
 3. The job detail page that features a tree visualization and tombstone blocks.
 
-
-<br>
-<br>
-
 [Back to top](#)
-
-<br>
-<br>
 
 # Building block view
 
@@ -330,7 +303,6 @@ Full backend services graph you can find at **[IRS team](https://catenax-ng.gith
 ### Component diagram
 
 ![whitebox overview](./images/ComponentOverview.png)
-
 
 ### Component description
 
@@ -354,22 +326,13 @@ Full backend services graph you can find at **[IRS team](https://catenax-ng.gith
 
 The Swagger documentation can be found in the local deployment of the reference application. More information can be found in the GitHub repository: https://github.com/eclipse-tractusx/item-relationship-service/blob/main/README.md
 
-<br>
-<br>
-
 [Back to top](#)
-
-<br>
-<br>
-
 
 # Deployment view
 
 The deployment view shows the IRS-DV application
 
-```
-//TODO: Adjust after HelmCarts Need later overview
-```
+ [../charts/README.md](https://github.com/catenax-ng/product-item-relationship-service-frontend/blob/main/charts/README.md)
 
 **GitHub**
 
@@ -379,44 +342,7 @@ GitHub contains the application source code as well as the Helm charts used for 
 
 For information on how to run the application locally, please check the README documentation in GitHub: https://github.com/catenax-ng/product-item-relationship-service-frontend
 
-## View Levels
-
-## Level 0 - Cluster overview
-
-### Isolated environment
-
-The isolated environment contains the IRS-DV as well as the surrounding services, excluding the external Keycloak.
-
-isolated (IMAGE)
-
-==TODO: Image?==
-
-### Integrated environment
-
-The integrated environment contains the IRS and is integrated with the rest of the Catena-X network.
-
-integrated (IMAGE)
-
-==TODO: Image?==
-
-## Level 1 - IRS application
-
-This section focuses only on the IRS-DV itself, detached from its neighbors. It shows the resources deployed in Kubernetes for the IRS.
-
-irs resources (IMAGE)
-
-==TODO: Image?==
-**Pod**
-
-This is the actual IRS Docker image which runs as a container. The ports are only available internally and can be opened up with the Service.
-
-<br>
-<br>
-
 [Back to top](#)
-
-<br>
-<br>
 
 # Cross-cutting concepts
 
@@ -448,8 +374,6 @@ A job can be in one of the following states:
 
 ### IRS API
 
-
-
 The IRS-DV accesses the IRS API by using RESTful calls over HTTP(S). Authentication is handled by Keycloak. 
 
 ## Credentials
@@ -473,14 +397,13 @@ Since the application is using react-router, it is possible to manually navigate
 ### Authentication errors
 If an authentication error is encoutered, the previous token is invaidated and user is automatically redirected to the welcome page.
 
-
 ## Development concepts
 
 ### Build, test, deploy
 
 The IRS-DV is built using React and utilizes all the standard concepts of it. Test execution is part of the build process and a minimum test coverage of 80% is enforced.
 
-==TODO: Still open - add info about helm chart==
+[../charts/README.md](https://github.com/catenax-ng/product-item-relationship-service-frontend/blob/main/charts/README.md)
 
 Although the Docker image can be deployed in various ways, the standard solution are the provided Helm charts, which describe the required components as well.
 
@@ -491,23 +414,15 @@ Currently there is no fixed schedule to upgrade the packages.
 Currently the package: "@mui/material": "5.10.17" cannot be updated to a newer version.
 A ticket has been opened with the owner of the library https://github.com/mui/material-ui/issues/35773
 
-
-
 ## Operational concepts
 
 ### Configuration - Helm Chart
 
 The most relevant config properties are exposed as environment variables and must be set in the Helm chart so the application can run at all. Check the IRS Helm chart in Git for all available variables.
 
-==TODO: Add Link to documentation==
-
-  <br>
-  <br>
+[../charts/README.md](https://github.com/catenax-ng/product-item-relationship-service-frontend/blob/main/charts/README.md)
 
 [Back to top](#)
-
-<br>
-<br>
 
 # Quality requirements
 
@@ -534,13 +449,7 @@ We are not going to list the requirements here, as they are defined in the confi
 * Vitest - Is used to test and generate a code coverage report
 * Sonarcube - evaluates and provides a metric of the current state of the code quality. (This is centrally configured and defined)
 
-<br>
-<br>
-
 [Back to top](#)
-
-<br>
-<br>
 
 # Glossary
 
@@ -549,10 +458,4 @@ We are not going to list the requirements here, as they are defined in the confi
 | IRS                                 | Item Relationship Service                                                                                                                                                                                                                                                            |
 | IRS-DV                              | Item Relationship service Debugging view                                                                                                                                                                                                                                             |
 
-<br>
-<br>
-
 [Back to top](#)
-
-<br>
-<br>
