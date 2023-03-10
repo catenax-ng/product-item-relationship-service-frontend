@@ -6,6 +6,13 @@ This [repository](https://github.com/catenax-ng/k8s-example-argo-cd-project) is 
 
 # Working with this repository
 
+## NPM Scripts
+
+- `npm start`: Starts the local development server
+- `npm test`: Runs tests
+- `npm run test:coverage`: Runs tests + collects collects coverage information
+- `npm run generateApiTypes`: Generates a client-side types to connect to the IRS Jobs API
+
 ## Conventional commits via pre-commit hook
 
 Conventional commits are prepared for this repository but require manual steps after you have cloned this repository 
@@ -68,9 +75,9 @@ are executed in a docker [build pipeline](.github/workflows/docker-build.yaml). 
 
 ## IaaS security scans with KICS
 
-The [iaas-security-scan](.github/workflows/iaas-security-scan.yaml) workflow is running a static code analysis of IaaS. 
-Our tool of choice for that is [KICS](https://kics.io/). For repositories in our catenax-ng GitHub organization, it is 
-mandatory to perform this kind of check, to comply with our quality gates. Findings will be present in the _Security_ 
+The [iaas-security-scan](.github/workflows/iaas-security-scan.yaml) workflow is running a static code analysis of IaaS.
+Our tool of choice for that is [KICS](https://kics.io/). For repositories in our catenax-ng GitHub organization, it is
+mandatory to perform this kind of check, to comply with our quality gates. Findings will be present in the _Security_
 tab of your repository.
 
 You can use the linked workflow 'as-is'. It is configured to run on changes the `main` branch and on a cron schedule.
