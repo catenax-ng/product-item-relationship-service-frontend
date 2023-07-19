@@ -1782,21 +1782,21 @@ export const JobsDemoDataSuccess: Jobs = {
       identification: "urn:uuid:b288d73f-4f93-4f24-bdd8-024de7c666ed",
       aspectType: "urn:bamm:io.catenax.ess_incident:1.0.0#EssIncident",
       payload: {
-        supplychain_impacted: "yes",
+        supplychain_impacted: "no",
       },
     },
     {
       identification: "urn:uuid:b2cb9a61-c9fd-4ad5-8fb4-29f288e46f9d",
       aspectType: "urn:bamm:io.catenax.ess_incident:1.0.0#EssIncident",
       payload: {
-        supplychain_impacted: "unknown",
+        supplychain_impacted: "no",
       },
     },
     {
       identification: "urn:uuid:0c7a06f6-d826-4d10-b11b-aedd0933e554",
       aspectType: "urn:bamm:io.catenax.ess_incident:1.0.0#EssIncident",
       payload: {
-        supplychain_impacted: "no",
+        supplychain_impacted: "unknown",
       },
     },
     {

@@ -75,9 +75,9 @@ are executed in a docker [build pipeline](.github/workflows/docker-build.yaml). 
 
 ## IaaS security scans with KICS
 
-The [iaas-security-scan](.github/workflows/iaas-security-scan.yaml) workflow is running a static code analysis of IaaS. 
-Our tool of choice for that is [KICS](https://kics.io/). For repositories in our catenax-ng GitHub organization, it is 
-mandatory to perform this kind of check, to comply with our quality gates. Findings will be present in the _Security_ 
+The [iaas-security-scan](.github/workflows/iaas-security-scan.yaml) workflow is running a static code analysis of IaaS.
+Our tool of choice for that is [KICS](https://kics.io/). For repositories in our catenax-ng GitHub organization, it is
+mandatory to perform this kind of check, to comply with our quality gates. Findings will be present in the _Security_
 tab of your repository.
 
 You can use the linked workflow 'as-is'. It is configured to run on changes the `main` branch and on a cron schedule.
