@@ -78,7 +78,6 @@ const localGetTokenRequest = async () => {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-        "Access-Control-Allow-Credentials": "true",
       },
       body: data,
     });

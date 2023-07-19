@@ -58,7 +58,7 @@ registry:
     local:
 keycloak:
   url:
-  grand:
+  grant:
     type:
   scope:
   client:

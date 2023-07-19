@@ -20,4 +20,4 @@ data:
     VITE_SERVER_LOCAL_SCOPE = {{ .Values.keycloak.scope }}
     VITE_SERVER_LOCAL_CLIENT_ID = {{ .Values.keycloak.client.id }}
     VITE_SERVER_LOCAL_CLIENT_SECRET = {{ .Values.keycloak.client.secret }}
-    VITE_SERVER_LOCAL_GRANT_TYPE = {{ .Values.keycloak.grand.type }}
+    VITE_SERVER_LOCAL_GRANT_TYPE = {{ .Values.keycloak.grant.type }}
