@@ -14,10 +14,9 @@ data:
     VITE_SERVER_DEFAULT_ENV = LOCAL
 
     VITE_SERVER_LOCAL_LABEL = Local Data
-    VITE_SERVER_DEFAULT_GLOBAL_ASSET_ID = {{ .Values.registry.default.global.asset.id }}
+    VITE_SERVER_DEFAULT_GLOBAL_ASSET_ID = {{ .Values.registry.default.globalassetid }}
+    VITE_SERVER_DEFAULT_BPN = {{ .Values.registry.default.bpn }}
     VITE_SERVER_LOCAL_BASE_URL = {{ .Values.registry.url.local }}
     VITE_SERVER_LOCAL_KEYCLOAK_URL = {{ .Values.keycloak.url }}
     VITE_SERVER_LOCAL_SCOPE = {{ .Values.keycloak.scope }}
-    VITE_SERVER_LOCAL_CLIENT_ID = {{ .Values.keycloak.client.id }}
-    VITE_SERVER_LOCAL_CLIENT_SECRET = {{ .Values.keycloak.client.secret }}
     VITE_SERVER_LOCAL_GRANT_TYPE = {{ .Values.keycloak.grant.type }}

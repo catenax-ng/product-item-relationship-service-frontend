@@ -43,10 +43,10 @@ export const useCustomKeycloak = () => {
         customAuthStatus = false;
         localAuthToken = "";
       },
-      login: async () => {
+      login: async (username: string, password: string) => {
         customAuthStatus = true;
         if (serverEnv === "LOCAL") {
-          customAuthStatus = await localGetTokenRequest();
+          customAuthStatus = await localGetTokenRequest(username, password);
         }
         if (customAuthStatus) navigate(`${serverEnv}/dashboard`);
       },
@@ -61,19 +61,18 @@ export const useCustomKeycloak = () => {
  *
  * @returns
  */
-const localGetTokenRequest = async () => {
+const localGetTokenRequest = async (username: string, password: string) => {
   console.log("localGetTokenRequest");
-  const url = import.meta.env[`VITE_SERVER_LOCAL_KEYCLOAK_URL`];
+  const url = import.meta.env[`VITE_SERVER_LOCAL_KEYCLOAK_URL`] + "/realms/CX-Central/protocol/openid-connect/token";
 
   const data = new URLSearchParams();
   data.append("grant_type", import.meta.env[`VITE_SERVER_LOCAL_GRANT_TYPE`]);
   data.append("scope", import.meta.env[`VITE_SERVER_LOCAL_SCOPE`]);
-  data.append("client_id", import.meta.env[`VITE_SERVER_LOCAL_CLIENT_ID`]);
-  data.append("client_secret", import.meta.env[`VITE_SERVER_LOCAL_CLIENT_SECRET`]);
+  data.append("client_id", username); // import.meta.env[`VITE_SERVER_LOCAL_CLIENT_ID`]
+  data.append("client_secret", password); // import.meta.env[`VITE_SERVER_LOCAL_CLIENT_SECRET`]
 
   console.log("Calling url: " + url);
   try {
-    //TODO: Add actual authentication headers here
     const response = await fetch(url, {
       method: "POST",
       headers: {

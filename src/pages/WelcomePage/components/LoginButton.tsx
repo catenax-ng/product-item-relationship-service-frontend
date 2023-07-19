@@ -1,7 +1,6 @@
 import { Button } from "cx-portal-shared-components";
 import { useTranslation } from "react-i18next";
 import { useCustomKeycloak } from "../../../lib/keycloak";
-import { getCurrentEnvironment } from "../../../utils/sessionStorageHandling";
 
 /**
  * The Login button is used to navigate to the keycloak logging page.
@@ -9,7 +8,13 @@ import { getCurrentEnvironment } from "../../../utils/sessionStorageHandling";
  * This is to ensure that the user is authenticated for the currently selected server environment.
  * @returns React.Component
  */
-export const LoginButton: React.FC = () => {
+
+interface LoginProps {
+  username: string;
+  password: string;
+}
+
+export const LoginButton: React.FC<LoginProps> = ({ username, password }) => {
   const { login, logout, authenticated } = useCustomKeycloak();
   const { t } = useTranslation();
 
@@ -17,8 +22,7 @@ export const LoginButton: React.FC = () => {
     if (authenticated) {
       await logout();
     }
-    const serverEnv = getCurrentEnvironment();
-    await login({ redirectUri: `${window.location.origin}/${serverEnv}/dashboard` });
+    await login(username, password);
   };
 
   return (

@@ -5,6 +5,8 @@ import { PublicHeader } from "../../components/layout/Header/PublicHeader";
 import { PaddedSection } from "../../components/layout/PaddedSection";
 import { IRSSelectServerEnv } from "./components/IRSSelectServerEnv";
 import { LoginButton } from "./components/LoginButton";
+import TextField from "@mui/material/TextField";
+import { useState } from "react";
 
 /**
  * The welcome page
@@ -14,6 +16,15 @@ import { LoginButton } from "./components/LoginButton";
  */
 export const WelcomePage: React.FC = () => {
   const { t } = useTranslation();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const handleUsernameInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUsername(event.target.value);
+  };
+  const handlePasswordInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
+  };
+
   return (
     <div>
       <PublicHeader />
@@ -37,7 +48,15 @@ export const WelcomePage: React.FC = () => {
         </PaddedSection>
 
         <IRSSelectServerEnv />
-        <LoginButton />
+        <TextField style={{ display: "block" }} placeholder={"Username"} id="username" onChange={handleUsernameInput} />
+        <TextField
+          style={{ display: "block" }}
+          placeholder={"Password"}
+          id="password"
+          type={"password"}
+          onChange={handlePasswordInput}
+        />
+        <LoginButton username={username} password={password} />
       </MainHeader>
     </div>
   );

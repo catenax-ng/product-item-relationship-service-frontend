@@ -4,7 +4,6 @@ replicaCount: 1
 image:
   repository: ghcr.io/catenax-ng/product-item-relationship-service-frontend
   pullPolicy: Always
-  tag: 1.0.3
 
 serviceAccount:
   create: true
@@ -19,7 +18,7 @@ readinessProbe:
 
 service:
   type: ClusterIP
-  port: 8080
+  port: 3000
 
 resources:
   limits:
@@ -46,11 +45,15 @@ securityContext:
   # capabilities:
   #   drop: ["ALL"]
 
+ingress:
+  enabled: false
+  hosts: []
+  tls: []
+
 registry:
   default:
-    global:
-      asset:
-        id:
+    globalassetid:
+    bpn:
   vite:
     manual:
       url:
@@ -61,6 +64,4 @@ keycloak:
   grant:
     type:
   scope:
-  client:
-    id:
-    secret:
+
